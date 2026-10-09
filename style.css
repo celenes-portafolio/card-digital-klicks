@@ -1,0 +1,255 @@
+/* ==========================================================
+   BASE
+   ========================================================== */
+body{
+    background-color: #222324;
+    margin: 0;
+    color: white;
+    font-family: "DM Sans", sans-serif;
+}
+
+.tarjeta{
+    width: 360px;
+    min-height: 640px;
+    margin: 0 auto;
+    background-color: black;
+    overflow: hidden;
+}
+
+.naranja{
+    color: #fc4104;
+}
+
+/* ==========================================================
+   BANNER
+   ========================================================== */
+.banner{
+    background-image: url(images/banner_card-digital.png);
+    background-size: cover;
+    height: 200px;
+    position: relative;
+}
+
+.banner_texto{
+    padding-top: 30px;
+}
+
+.banner h1{
+    margin-top: 0;
+}
+
+h1 span{
+    display: block;
+    margin-left: 10%;
+    color: black;
+    font-size: 20px;
+    font-family: "Inter", sans-serif;
+}
+
+.hr_banner{
+    border: 1px solid #fc4104;
+    width: 50px;
+    margin-left: 10%;
+    margin-top: -12px;
+}
+
+h4{
+    margin-top: 0;
+    font-weight: 400;
+}
+
+h4 span{
+    display: block;
+    margin-left: 10%;
+    color: black;
+    font-size: 11px;
+}
+
+/* ==========================================================
+   LOGO
+   ========================================================== */
+.logo{
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 140px;
+}
+
+.logo img{
+    width: 55%;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+}
+
+/* ==========================================================
+   CONTENIDO
+   ========================================================== */
+.contenido{
+    width: 80%;
+    margin: 0 auto;
+    padding-top: 10%;
+}
+
+h2{
+    text-align: center;
+    font-size: 16px;
+}
+
+h2 span{
+    display: inline;
+}
+
+h2 span:first-child{
+    display: block;
+}
+
+.hr_separador1,
+.hr_separador2,
+.hr_separador3{
+    border: 1px solid;
+    width: 50px;
+}
+
+/* ==========================================================
+   BOTONES
+   ========================================================== */
+.botones ul{
+    margin: 0;
+    padding: 0;
+}
+
+.botones li{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 90%;
+    background-color: white;
+    color: black;
+    padding: 6px 10px;
+    margin: 5% auto;
+    list-style: none;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    box-sizing: border-box;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Botones normales: blancos, al pasar el mouse se vuelven naranja */
+.botones li:hover{
+    background-color: #fc4104;
+    color: white;
+    cursor: pointer;
+}
+
+/* Primer botón destacado: naranja, al pasar el mouse se vuelve blanco */
+.botones li.activo{
+    background-color: #fc4104;
+    color: white;
+    font-weight: 700;
+}
+
+.botones li.activo:hover{
+    background-color: white;
+    color: #fc4104;
+}
+
+.icono-boton{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.icono-boton img{
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+    display: block;
+    flex-shrink: 0;
+}
+
+.texto-boton{
+    flex: 1;
+    text-align: left;
+}
+
+.flecha-boton{
+    margin-left: auto;
+    flex-shrink: 0;
+}
+
+/* ==========================================================
+   FOLLOW US + REDES
+   ========================================================== */
+.follow{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 30px;          /* más espacio entre los botones y FOLLOW US */
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.follow::before,
+.follow::after{
+    content: "";
+    height: 1px;
+    background-color: #555;
+    flex: 1;
+}
+
+.redes{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+    margin-top: 16px;
+}
+
+.iconredes{
+    width: 28px;
+    height: 28px;
+}
+
+/* ==========================================================
+   FOOTER
+   ========================================================== */
+.hr_footer{
+    border: none;
+    border-top: 1px solid #444;
+    margin: 20px 0 10px;
+}
+
+.footer{
+    text-align: center;
+    font-size: 11px;
+    padding-bottom: 35px;
+}
+
+.footer p{
+    margin: 8px 0;
+}
+
+.footer-direccion{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.icono-pin{
+    width: 35px;
+    height: auto;
+    display: block;
+}
+
+.naranja-punto{
+    color: #fc4104;
+    margin: 0 8px;
+}

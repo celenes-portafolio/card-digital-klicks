@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>card-digital</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+    <script src="script.js"></script>
+  </head>
+  <body>
+    <div class="tarjeta">
+        <div class="banner">
+            <div class="banner_texto">
+                <h1>
+                    <span>DIGITAL </span>
+                    <span class="naranja">MARKETING </span>
+                    <span>AGENCY</span>
+                </h1>
+                <hr class="hr_banner">
+                <h4>
+                    <span>Building Strong Digital</span>
+                    <span>Foundations</span>
+                </h4>
+            </div>
+            <div class="logo">
+                <img src="images/logo.png" alt="Klicks Creative UK">
+            </div>
+        </div>
+        <div class="contenido">
+            <h2>
+                <span>WE CONNECT</span> 
+                <span class="naranja">YOUR BRAND </span>
+                <span>TO SUCCESS</span>
+            </h2>
+            <hr class="hr_separador1">
+            <div class="botones">
+                <ul>
+                    <li class="activo" id="btn-formulario">
+                        <span class="icono-boton"><img src="images/bt_ico_1.png"></span>
+                        <span class="texto-boton">Get your Free Digital Audit</span>
+                        <span class="flecha-boton">→</span>
+                    </li>
+                    <li id="btn-whatsapp">
+                        <span class="icono-boton"><img src="images/bt_ico_2.png"></span>
+                        <span class="texto-boton">Speak with a Specialist</span>
+                        <span class="flecha-boton">→</span>
+                    </li>
+                    <li id="btn-review">
+                        <span class="icono-boton"><img src="images/bt_ico_3.png"></span>
+                        <span class="texto-boton">Leave a Review</span>
+                        <span class="flecha-boton">→</span>
+                    </li>
+                    <li id="btn-web">
+                        <span class="icono-boton"><img src="images/bt_ico_4.png"></span>
+                        <span class="texto-boton">Visit Our Website</span>
+                        <span class="flecha-boton">→</span>
+                    </li>
+                    <li id="btn-maps">
+                        <span class="icono-boton"><img src="images/bt_ico_5.png"></span>
+                        <span class="texto-boton">Where We Work</span>
+                        <span class="flecha-boton">→</span>
+                    </li>
+                    <li id="btn-contacto">
+                        <span class="icono-boton"><img src="images/bt_ico_6.png"></span>
+                        <span class="texto-boton">Add Klicks to Contacts</span>
+                        <span class="flecha-boton">→</span>
+                    </li>
+                </ul>
+            </div>
+            <h3 class="follow">FOLLOW US</h3>
+            <div class="redes">
+                <a href="https://www.instagram.com/klickscreativesuk" target="_blank" rel="noopener">
+                    <img src="images/logo_instagram.png" alt="Instagram" class="iconredes">
+                </a>
+                <a href="https://www.facebook.com/profile.php?id=61589152136602" target="_blank" rel="noopener">
+                    <img src="images/logo_facebook.png" alt="Facebook" class="iconredes">
+                </a>
+                <a href="https://www.tiktok.com/@klickscreativesuk" target="_blank" rel="noopener">
+                    <img src="images/logo_tiktok.png" alt="TikTok" class="iconredes">
+                </a>
+                <a href="https://www.youtube.com/@Klickscreativesuk" target="_blank" rel="noopener">
+                    <img src="images/logo_youtube.png" alt="YouTube" class="iconredes">
+                </a>
+                <a href="https://www.threads.net/@klickscreativesuk" target="_blank" rel="noopener">
+                    <img src="images/logo_threads.png" alt="Threads" class="iconredes">
+                </a>
+            </div>
+            <hr class="hr_footer">
+            <div class="footer">
+                <p class="footer-direccion"><img src="images/ubicacion.png" class="icono-pin">Birmingham, United Kingdom</p>
+                <p>BRANDING <span class="naranja-punto">&bull;</span> MARKETING <span class="naranja-punto">&bull;</span> DESIGN</p>
+            </div>
+        </div>
+    </div>
+    <!-- Modal para escritorio: guardar contacto via QR -->
+    <div id="modal-qr" class="modal-qr oculto">
+        <div class="modal-qr-contenido">
+            <p>Escanea este codigo desde tu celular para guardar el contacto</p>
+            <img id="qr-img" src="" alt="Codigo QR">
+            <button id="cerrar-modal">Cerrar</button>
+        </div>
+    </div> 
+    <script src="script.js"></script>
+  </body>
+</html>
