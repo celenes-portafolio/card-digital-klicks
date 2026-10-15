@@ -2,7 +2,7 @@
 // CONFIGURACION: cambia estos datos si algo se actualiza
 // ==========================================================
 const WHATSAPP_NUMERO = "447521934523"; // sin + ni espacios
-const WHATSAPP_MENSAJE = "Hola, quiero hablar con un especialista de Klicks Creative";
+const WHATSAPP_MENSAJE = "Hello, I would like to speak with a specialist from Klicks Creative.";
 const GOOGLE_REVIEW_URL = "https://search.google.com/local/writereview?placeid=ChIJVeItlV29cEgRly-T_X1wchw";
 const FORMULARIO_URL = "https://form.jotform.com/260974369548070";
 const SITIO_WEB_URL = "https://klickscreatives.co.uk";
