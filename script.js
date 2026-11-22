@@ -8,7 +8,7 @@ const FORMULARIO_URL = "https://form.jotform.com/260974369548070";
 const SITIO_WEB_URL = "https://klickscreatives.co.uk";
 const GOOGLE_MAPS_URL = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent("Klicks Creatives UK, 60 Frederick St, Birmingham B1 3HS, United Kingdom");
 
-// Datos para la tarjeta de contacto (vCard)
+// Datos para la tarjeta de contacto (vCard) - usada en iPhone y como respaldo
 const VCARD = `BEGIN:VCARD
 VERSION:3.0
 FN;CHARSET=UTF-8:Katerin Guerrero
@@ -21,11 +21,26 @@ ADR;CHARSET=UTF-8;TYPE=WORK:;;60 Frederick St;Birmingham;;B1 3HS;United Kingdom
 URL;TYPE=WORK;CHARSET=UTF-8:https://klickscreatives.co.uk
 END:VCARD`;
 
+// Mismos datos para Android (abre la pantalla "Nuevo contacto" ya rellena).
+// Si cambias algo arriba en la VCARD, cambialo tambien aqui.
+const CONTACTO_ANDROID = {
+    name: "Katerin Guerrero",
+    phone: "+447521934523",
+    email: "hello@klickscreatives.co.uk",
+    company: "Klicks Creative UK",
+    job_title: "Creative Director",
+    postal: "60 Frederick St, Birmingham B1 3HS, United Kingdom"
+};
+
 // ==========================================================
-// DETECCION DE MOVIL
+// DETECCION DE DISPOSITIVO
 // ==========================================================
 function esMovil() {
     return /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
+}
+
+function esAndroid() {
+    return /Android/i.test(navigator.userAgent);
 }
 
 // ==========================================================
@@ -61,7 +76,9 @@ document.addEventListener("DOMContentLoaded", function () {
     // AGREGAR A CONTACTOS
     // ==========================================================
     document.getElementById("btn-contacto").addEventListener("click", function () {
-        if (esMovil()) {
+        if (esAndroid()) {
+            abrirContactosAndroid();
+        } else if (esMovil()) {
             descargarVCard();
         } else {
             mostrarModalQR();
@@ -73,6 +90,27 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+// Android: abre la app Contactos en "Nuevo contacto" con los datos
+// ya escritos. La persona solo toca Guardar.
+function abrirContactosAndroid() {
+    const extras = Object.keys(CONTACTO_ANDROID).map(function (clave) {
+        return "S." + clave + "=" + encodeURIComponent(CONTACTO_ANDROID[clave]);
+    }).join(";");
+
+    const intentUrl = "intent:#Intent;action=android.intent.action.INSERT;" +
+        "type=vnd.android.cursor.dir/contact;" + extras + ";end";
+
+    window.location.href = intentUrl;
+
+    // Respaldo: si en 1.5 segundos la pagina sigue visible (no se abrio
+    // Contactos), se descarga el archivo .vcf como antes.
+    setTimeout(function () {
+        if (!document.hidden) {
+            descargarVCard();
+        }
+    }, 1500);
+}
+
 function descargarVCard() {
     const blob = new Blob([VCARD], { type: "text/vcard" });
     const url = URL.createObjectURL(blob);
@@ -82,7 +120,7 @@ function descargarVCard() {
     document.body.appendChild(enlace);
     enlace.click();
     document.body.removeChild(enlace);
-    URL.revokeObjectURL(url);
+    setTimeout(function () { URL.revokeObjectURL(url); }, 2000);
 }
 
 function mostrarModalQR() {
