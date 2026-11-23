@@ -21,17 +21,6 @@ ADR;CHARSET=UTF-8;TYPE=WORK:;;60 Frederick St;Birmingham;;B1 3HS;United Kingdom
 URL;TYPE=WORK;CHARSET=UTF-8:https://klickscreatives.co.uk
 END:VCARD`;
 
-// Mismos datos para Android (abre la pantalla "Nuevo contacto" ya rellena).
-// Si cambias algo arriba en la VCARD, cambialo tambien aqui.
-const CONTACTO_ANDROID = {
-    name: "Katerin Guerrero",
-    phone: "+447521934523",
-    email: "hello@klickscreatives.co.uk",
-    company: "Klicks Creative UK",
-    job_title: "Creative Director",
-    postal: "60 Frederick St, Birmingham B1 3HS, United Kingdom"
-};
-
 // ==========================================================
 // DETECCION DE DISPOSITIVO
 // ==========================================================
@@ -90,25 +79,22 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-// Android: abre la app Contactos en "Nuevo contacto" con los datos
-// ya escritos. La persona solo toca Guardar.
-function abrirContactosAndroid() {
-    const extras = Object.keys(CONTACTO_ANDROID).map(function (clave) {
-        return "S." + clave + "=" + encodeURIComponent(CONTACTO_ANDROID[clave]);
-    }).join(";");
+// Android: abre el menu de compartir del telefono con el contacto
+// adjunto. La persona elige "Contactos" y se abre con los datos
+// escritos para tocar Guardar. Si el navegador no lo permite,
+// se descarga el archivo .vcf como respaldo.
+async function abrirContactosAndroid() {
+    const archivo = new File([VCARD], "Katerin_Guerrero_Klicks.vcf", { type: "text/vcard" });
 
-    const intentUrl = "intent:#Intent;action=android.intent.action.INSERT;" +
-        "type=vnd.android.cursor.dir/contact;" + extras + ";end";
-
-    window.location.href = intentUrl;
-
-    // Respaldo: si en 1.5 segundos la pagina sigue visible (no se abrio
-    // Contactos), se descarga el archivo .vcf como antes.
-    setTimeout(function () {
-        if (!document.hidden) {
-            descargarVCard();
+    if (navigator.canShare && navigator.canShare({ files: [archivo] })) {
+        try {
+            await navigator.share({ files: [archivo], title: "Katerin Guerrero" });
+            return;
+        } catch (error) {
+            if (error && error.name === "AbortError") return; // la persona cerro el menu
         }
-    }, 1500);
+    }
+    descargarVCard();
 }
 
 function descargarVCard() {
